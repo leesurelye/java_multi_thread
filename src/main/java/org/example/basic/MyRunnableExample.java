@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.basic;
 
 class MyRunnable implements Runnable{
     private String message;

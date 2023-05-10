@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.basic;
 
 
 import java.util.concurrent.Executors;

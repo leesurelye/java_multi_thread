@@ -22,8 +22,15 @@ class Request{
 }
 
 /**
+ * 守护对象<br>
+ *
  * 这个对象中有两种状态，即有元素和无元素
  * 线程需要根据对象的两种状态来决定执行还是等待
+ * <br>
+ * <br>
+ * 守护对象中包被守护的方法(guardedMethod) 和改变状态的方法(stateChangingMethod).<br>
+ * 1. 当线程执行guardedMethod时，需要判断守护条件，通过while和wait()来实现<br>
+ * 2. stateChangingMethod则通过notify/notifyAll实现
  */
 class RequestQueue{
     // Queue: FIFO
@@ -110,7 +117,7 @@ class ServerThread extends Thread {
  *<br>
  * 案例中参与的类：<br>
  * - request： 请求实体
- * - requestQueue: 存放请求的队列
+ * - 守护对象：requestQueue: 存放请求的队列
  * - ClientThread: 向请求队列中放数据
  * - ServerThread: 向请求队列中拿数据，如果没有，则等待
  * Main
