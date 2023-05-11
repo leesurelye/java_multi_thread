@@ -1,4 +1,4 @@
-package org.example.multi.thread.chapter1;
+package org.thread.chapter1;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;

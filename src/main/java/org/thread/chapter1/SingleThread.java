@@ -1,4 +1,4 @@
-package org.example.multi.thread.chapter1;
+package org.thread.chapter1;
 
 /**
  * 共享资源的类，需要限制线程访问该类的互斥 synchronized

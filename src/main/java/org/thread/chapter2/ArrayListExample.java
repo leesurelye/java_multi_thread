@@ -1,7 +1,6 @@
-package org.example.multi.thread.chapter2;
+package org.thread.chapter2;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**

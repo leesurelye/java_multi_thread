@@ -1,4 +1,4 @@
-package org.example.multi.thread.chapter3;
+package org.thread.chapter3;
 
 import java.util.LinkedList;
 import java.util.Queue;

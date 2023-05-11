@@ -1,4 +1,4 @@
-package org.example.multi.thread.chapter2;
+package org.thread.chapter2;
 
 /**
  * Immutable 类： 需要将字段设置为final, 同时不能设置setter方法，

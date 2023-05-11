@@ -1,16 +1,16 @@
-package org.example.multi.thread.chapter3;
+package org.thread.chapter3;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 class BlockingRequestQueue{
-    // 重入锁，线程安全的队列
+    // 使用重入锁，线程安全的队列
     private final BlockingQueue<Request> queue = new LinkedBlockingQueue<>();
     public Request getRequest(){
         Request request = null;
         try {
             request = queue.take();
-        }catch (InterruptedException e){}
+        } catch (InterruptedException e){}
         return request;
     }
 

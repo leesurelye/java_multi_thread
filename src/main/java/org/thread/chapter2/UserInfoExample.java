@@ -1,4 +1,4 @@
-package org.example.multi.thread.chapter2;
+package org.thread.chapter2;
 
 class UserInfo{
     // ERROR： StringBuffer为Mutable类

@@ -1,4 +1,4 @@
-package org.example.basic;
+package org.thread.basic;
 
 class MyRunnable implements Runnable{
     private String message;
