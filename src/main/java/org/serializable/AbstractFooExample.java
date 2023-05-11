@@ -8,18 +8,17 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 abstract class AbstractFoo {
-    private int x, y; // The state
+    protected int x, y; // The state
     private boolean init = false;
     public AbstractFoo(int x, int y) { initialize(x, y); }
     /**
      * This constructor and the following method allow subclass's
      * readObject method to initialize our internal state.
      */
-    protected AbstractFoo() { }
+    public AbstractFoo() { }
     protected final void initialize(int x, int y) {
         if (init)
-            throw new IllegalStateException(
-                    "Already initialized");
+            throw new IllegalStateException("Already initialized");
         this.x = x;
         this.y = y;
         init = true;
@@ -34,7 +33,7 @@ abstract class AbstractFoo {
 
 class Foo extends AbstractFoo implements Serializable{
 
-    private static final long serialVersionUID = 698765800876321L;
+    private static final long serialVersionUID = 964458008762323231L;
     public Foo(int x, int y)
     {
         super(x, y);
@@ -51,8 +50,8 @@ class Foo extends AbstractFoo implements Serializable{
     private void writeObject(ObjectOutputStream out) throws IOException{
         out.defaultWriteObject();
         // 手动序列化父类
-        out.writeObject(getX());
-        out.writeObject(getY());
+        out.writeInt(getX());
+        out.writeInt(getY());
     }
 }
 public class AbstractFooExample
@@ -60,9 +59,10 @@ public class AbstractFooExample
     public static void main(String[] args)
     {
         try {
-            // serializable
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ObjectOutputStream os = new ObjectOutputStream(bos);
+            // serializable
+            ObjectOutputStream os =
+                    new ObjectOutputStream(bos);
             os.writeObject(new Foo(1, 2));
             // deserializable
             ObjectInputStream in =
