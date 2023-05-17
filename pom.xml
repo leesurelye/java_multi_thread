@@ -20,6 +20,12 @@
             <artifactId>testng</artifactId>
             <version>7.5</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-jdbc</artifactId>
+            <version>0.275-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
