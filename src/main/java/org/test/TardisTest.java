@@ -86,22 +86,20 @@ public class TardisTest
         String[] columnStr;
         while (iterator.hasNext()) {
             columnStr = iterator.next();
-            for (int i = 0; i < ColumnCount; i++) {
+            for (int i = 1; i < ColumnCount; i++) {
                 // System.out.printf("|%" + (columnMaxLengths[i] + 1) + "s", columnStr[i]);
                 System.out.printf("|%" + columnMaxLengths[i] + "s", columnStr[i]);
             }
-            System.out.println("|");
         }
         printSeparator(columnMaxLengths);
     }
 
     private static void printColumnName(ResultSetMetaData resultSetMetaData, int[] columnMaxLengths) throws SQLException {
         int columnCount = resultSetMetaData.getColumnCount();
-        for (int i = 0; i < columnCount; i++) {
+        for (int i = 1; i < columnCount; i++) {
             // System.out.printf("|%" + (columnMaxLengths[i] + 1) + "s", resultSetMetaData.getColumnName(i + 1));
             System.out.printf("|%" + columnMaxLengths[i] + "s", resultSetMetaData.getColumnName(i + 1));
         }
-        System.out.println("|");
     }
 
     private static void printSeparator(int[] columnMaxLengths) {

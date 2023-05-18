@@ -1,25 +1,10 @@
 package org.thread.chapter3;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import org.thread.chapter3.obj.BlockingRequestQueue;
+import org.thread.chapter3.obj.Request;
 
-class BlockingRequestQueue{
-    // 使用重入锁，线程安全的队列
-    private final BlockingQueue<Request> queue = new LinkedBlockingQueue<>();
-    public Request getRequest(){
-        Request request = null;
-        try {
-            request = queue.take();
-        } catch (InterruptedException e){}
-        return request;
-    }
 
-    public void putRequest(Request request){
-        try{
-            queue.put(request);
-        }catch (InterruptedException e){}
-    }
-}
+
 
 
 /**
@@ -36,7 +21,7 @@ public class LinkedBlockQueueExample
             int i = 0;
             try{
                 while (true){
-                    Request request = new Request(i ++);
+                    Request request = new Request(i++ + " ");
                     queue.putRequest(request);
                     System.out.println("Client puts request: " + request);
                     Thread.sleep(1000);
