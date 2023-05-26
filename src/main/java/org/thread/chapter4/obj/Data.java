@@ -33,9 +33,12 @@ public class Data
     // 若修改过内容，则保存
     public synchronized void save() throws IOException
     {
-        if(!changed) return ;
+        // balk模式，直接返回
+        if(!changed) {
+            System.out.println(Thread.currentThread().getName() + " calls save(), Balking");
+            return ;
+        }
         doSave();
-        changed = false;
     }
 
     private void doSave() throws IOException {

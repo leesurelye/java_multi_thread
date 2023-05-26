@@ -3,7 +3,6 @@ package org.thread.chapter4.thread;
 import org.thread.chapter4.obj.Data;
 
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * 定期保存数据内容的线程

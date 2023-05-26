@@ -16,6 +16,8 @@ public class BaseCase
     {
         Data data = new Data("data.txt", "");
         new ChangeThread(data, "Changer").start();
+        // 不管发生任何情况，content字段的内容都不会重复保存的(没有重复)
+        // 当content内容相同时，线程就会 return (balk) ，不会调用doSave()方法
         new SaveThread(data, "Saver").start();
     }
 }

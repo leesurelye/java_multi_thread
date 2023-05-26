@@ -3,6 +3,6 @@
 
 ## 类图
 
-![UML中关于标签符号的说明](./src/assert/UML-1.png)
+![UML中关于标签符号的说明](src/main/resources/UML-1.png)
 
 ## 时序图
