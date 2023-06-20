@@ -1,24 +1,8 @@
 package org.thread.chapter1;
 
+import org.common.obj.Tool;
+
 import java.util.Random;
-
-/**
- * 临界资源
- */
-class Tool {
-    private final String name;
-
-    public Tool(String name)
-    {
-        this.name = name;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "[" + name +"]";
-    }
-}
 
 class EatThread extends Thread {
     private final String name;
@@ -31,6 +15,7 @@ class EatThread extends Thread {
 
     public EatThread(String name, Tool leftHand, Tool rightHand)
     {
+        super(name);
         this.name = name;
         this.leftHand = leftHand;
         this.rightHand = rightHand;
@@ -68,6 +53,7 @@ public class ForkAndSpoonExample
     {
         Tool fork = new Tool("Fork");
         Tool spoon = new Tool("Spoon");
+        // 造成死锁
         new EatThread("Alice", fork, spoon).start();
         new EatThread("Bob", fork, spoon).start();
     }

@@ -27,5 +27,6 @@ public class MyRunnableExample
     {
         new Thread(new MyRunnable("Thread_1:")).start();
         new Thread(new MyRunnable("Thread_2:")).start();
+        new Thread(() -> System.out.println("aaa")).start();
     }
 }
