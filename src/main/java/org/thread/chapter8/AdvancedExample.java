@@ -1,7 +1,6 @@
 package org.thread.chapter8;
 
-import org.thread.chapter8.obj.Channel;
-import org.thread.chapter8.thread.ClientThread;
+import org.thread.chapter8.thread.AdvancedClientThread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,7 +18,14 @@ public class AdvancedExample
 //        new ClientThread("Alice", channel).start();
 //        new ClientThread("Bob", channel).start();
 //        new ClientThread("Chris", channel).start();
-        executorService.execute(new ClientThread("Alice"));
-        executorService.execute(new ClientThread(""));
+        try {
+            new AdvancedClientThread("Alice", executorService).start();
+            new AdvancedClientThread("Bob", executorService).start();
+            new AdvancedClientThread("Chris", executorService).start();
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+        } finally {
+            executorService.shutdown();
+        }
     }
 }

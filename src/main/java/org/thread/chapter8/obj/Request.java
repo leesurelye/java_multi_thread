@@ -2,7 +2,7 @@ package org.thread.chapter8.obj;
 
 import java.util.Random;
 
-public class Request
+public class Request implements Runnable
 {
     private final String name;
 
@@ -22,6 +22,13 @@ public class Request
         try{
             Thread.sleep(random.nextInt(1000));
         }catch (InterruptedException e){}
+    }
+
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " execute() " + this);
+        try {
+            Thread.sleep(1000);
+        }catch (InterruptedException e) {}
     }
     @Override
     public String toString()
