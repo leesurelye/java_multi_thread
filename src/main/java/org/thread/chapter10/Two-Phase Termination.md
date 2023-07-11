@@ -5,7 +5,7 @@
     
 这个模式的名称是分两个阶段终止的意思，它是一种 先执行完终止处理再终止线程的模式，用于终止处理。
 
-![img.png](Two-Phrase.png)
+![img.png](../../../../resources/Two-Phrase.png)
 
 该模式的要点如下：
 - 安全地终止线程（安全性）
@@ -19,7 +19,7 @@
 Two-Phrase Termination模式就是用来优雅地终止线程的
 > UML
 
-![img.png](Two-Phrase-UML.png)
+![img.png](../../../../resources/Two-Phrase-UML.png)
 
 > isShutDown 和 isTerminated
 ![img.png](ShutDown-Terminated.png)
@@ -34,3 +34,22 @@ if (Thread.interrupted()) {
     throw new InterruptedException();
 }
 ```
+# 扩展
+> java.util.concurrent.CountDownLatch
+
+join()方法只能等待指定的线程终止， java.util.concurrent.CountDownLatch 可以实现等待指定次数的CountDown方法被调用这一功能。CountDownExample的示列程序
+实现了让线程处理10项Task并等待这10项工作都处理完成的功能。
+
+> java.util.concurrent.CyclicBarrier
+
+java.util.concurrent.CountDownLatch 只能进行 倒数计数，一旦计数值变为0后，即使调用await方法，主线程也会立即返回。
+若想多次重复进行线程同步时，使用CyclicBarrier类比较方便。
+
+CyclicBarrier可以周期性地(Cyclic)创建屏障(Barrier)，在屏障接触之前，碰到屏障的线程无法继续向下执行。当指定个数的线程都到达了屏障后，
+屏障就会解除。
+
+示列程序：org.thread.chapter10.CyclicBarrierExample, 每一次都是等待三个线程结束后才会向下执行
+
+![img.png](../../../../resources/CyclicBarrierExample.png)
+
+ 
