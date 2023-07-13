@@ -1,0 +1,15 @@
+@startuml
+Alice -> "Bob()" : hello
+"Bob()" -> "this is very\n long " as Long
+'这是注解'
+Long --> "Bob()" : ok
+
+'文本对齐 skinparam sequenceMessageAlign 参数: left right center'
+skinparam sequenceMessageAlign left
+'响应信息显示在镜头下面'
+skinparam responseMessageBelowArrow true
+
+Object -> Object : this is a signal to self
+
+Object <- Object : this is a signal to self.
+@enduml

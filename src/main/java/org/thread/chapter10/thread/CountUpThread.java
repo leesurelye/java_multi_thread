@@ -1,5 +1,11 @@
 package org.thread.chapter10.thread;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class CountUpThread extends Thread
 {
     private long counter = 0;
@@ -28,7 +34,7 @@ public class CountUpThread extends Thread
     /**
      * 在开发过程中，捕获了InterruptedException，使用isInterrupted()方法就可以检测中断，但是为什么还要设置
      * shutdownRequested标志？
-     * 正常来说，这样做完成没有问题，但是只要在线程执行的一处忽略了InterruptedException，上面的方法就失效了
+     * 正常来说，这样做完全没有问题，但是只要在线程执行的一处忽略了InterruptedException，上面的方法就失效了
      *
      */
     @Override
@@ -36,9 +42,10 @@ public class CountUpThread extends Thread
     {
         try {
             while (!isShutdownRequested()) {
+                // 保证在try{} catch{} 语句中的方法都能抛出异常
                 doWork();
             }
-        }catch (InterruptedException e) {
+        }catch (Exception e) {
             // 忽略了InterruptedException
         } finally {
             doShutdown();
@@ -49,7 +56,7 @@ public class CountUpThread extends Thread
     {
         counter ++;
         System.out.println("doWork(): counter = " + counter);
-        Thread.sleep(100);
+        Thread.sleep(1000);
     }
 
     /**
@@ -57,6 +64,19 @@ public class CountUpThread extends Thread
      */
     private void doShutdown()
     {
+        FileOutputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileOutputStream(new File("counter.txt"));
+        }catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert fileInputStream != null;
+                fileInputStream.close();
+            }catch (IOException e){
+
+            }
+        }
         System.out.println("doShutdown(), counter = " + counter);
     }
 }

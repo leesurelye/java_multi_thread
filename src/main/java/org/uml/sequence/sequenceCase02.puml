@@ -1,0 +1,40 @@
+@startuml
+participant Participant1    as Foo
+participant Foo0
+actor       Actor1          as Foo1 #99FF99
+boundary    Boundary1       as Foo2
+control     Control1        as Foo3
+entity      Entity1         as Foo4
+database    Database1       as Foo5
+collections Collections1    as Foo6
+queue       Queue1           as Foo7
+participant Last            order 30
+participant Middle          order 20
+participant First           order 10
+
+skinparam sequenceMessageAlign center
+
+'改变箭头样式'
+'使用autonumber自动对消息编号, autonumber [start ] [step] [style]'
+
+autonumber 1 "<b>[0]"
+Foo -> Foo0 : 正常的箭头
+'修改箭头颜色'
+Foo -[#red]>x  Foo1 : 表示丢失的信息
+Foo1 -[#grey]-> Foo : 回复消息
+
+Foo ->> Foo2 : 单个箭头
+
+'暂停使用自动编号'
+autonumber stop
+
+Foo -\ Foo3 : 只有上半部分的实体箭头
+Foo -\\ Foo3 :  只有上半部分的简化箭头
+Foo -/ Foo4 : 只有下半部分的箭头
+
+'继续编号 [step] [style]'
+autonumber resume 1 "<font color=blue><b>Message 0"
+Foo ->o Foo5 : 箭头后添加一个圆圈
+Foo <-> Foo6 : 双向箭头
+
+@enduml

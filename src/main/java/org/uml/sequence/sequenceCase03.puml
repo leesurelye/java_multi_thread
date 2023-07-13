@@ -1,0 +1,12 @@
+@startuml
+participant Participant [
+    =Object
+    ----
+    Object
+]
+
+participant Bob
+
+Participant -> Bob
+
+@enduml

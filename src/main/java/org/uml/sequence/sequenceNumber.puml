@@ -1,0 +1,45 @@
+@startuml
+'页眉'
+header Page Header
+'页脚'
+footer Page %page% of %lastpage%
+'标题'
+
+title Sequence Title
+
+participant Foo
+participant Foo0
+actor       Foo1 #99FF99
+boundary    Foo2
+control     Foo3
+entity      Foo4
+database    Foo5
+collections Foo6
+queue       Foo7
+participant Last            order 30
+participant Middle          order 20
+participant First           order 10
+
+skinparam sequenceMessageAlign center
+
+'使用autonumber自动对消息编号, autonumber [start ] [step] [style]'
+autonumber 1.1 "<b>[0]"
+Foo -> Foo0 : 正常的箭头
+'修改箭头颜色'
+Foo -[#red]>x  Foo1 : 表示丢失的信息
+Foo1 -[#grey]-> Foo : 回复消息
+
+'增加第一个数字 inc A'
+autonumber inc A
+Foo ->> Foo2 : 单个箭头
+'增加第二个数字 inc B'
+autonumber inc B
+'在消息体上，使用用 %autonumber% 读取当前的序号'
+Foo -\ Foo3 : 只有上半部分的实体箭头 %autonumber%
+Foo -\\ Foo3 :  只有上半部分的简化箭头
+Foo -/ Foo4 : 只有下半部分的箭头
+
+Foo ->o Foo5 : 箭头后添加一个圆圈
+Foo <-> Foo6 : 双向箭头
+
+@enduml
