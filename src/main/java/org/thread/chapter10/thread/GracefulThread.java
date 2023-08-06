@@ -13,7 +13,7 @@ public class GracefulThread extends Thread
     }
 
     @Override
-    public void run()
+    public final void run()
     {
         try {
             while (isShutdownRequested()) {
@@ -25,7 +25,11 @@ public class GracefulThread extends Thread
         }
     }
 
-    protected void doWork() throws InterruptedException {}
+    protected void doWork() throws InterruptedException {
+        // Not implement error
+    }
 
-    protected void doShutdown() {}
+    protected void doShutdown() {
+        // Not implement error
+    }
 }

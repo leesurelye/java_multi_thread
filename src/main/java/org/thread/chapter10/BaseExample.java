@@ -11,7 +11,7 @@ public class BaseExample
             CountUpThread thread = new CountUpThread();
             thread.start();
 
-            Thread.sleep(1000);
+            Thread.sleep(10000);
             System.out.println("main: shutdownRequest");
 
             thread.shutdownRequest();

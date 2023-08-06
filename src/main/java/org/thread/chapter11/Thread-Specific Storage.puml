@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+ClientThread -> TSObjectProxy: request
+note left of ClientThread
+This is the first request.
+end note
+activate TSObjectProxy
+TSObjectProxy -> TSObjectCollection: getTSObject
+activate TSObjectCollection
+TSObjectCollection --> TSObjectProxy: return null
+deactivate TSObjectCollection
+
+TSObjectProxy -> TSObject **: create
+activate TSObject
+TSObject --> TSObjectProxy : return TSObject
+deactivate TSObject
+
+TSObjectProxy -> TSObjectCollection: setTSObject
+activate TSObjectCollection
+TSObjectCollection --> TSObjectProxy : ok
+deactivate TSObjectCollection
+
+TSObjectProxy -> TSObject : request
+activate TSObject
+TSObject --> TSObjectProxy: return TSObject
+deactivate TSObject
+
+TSObjectProxy --> ClientThread: return TSObject
+deactivate TSObjectProxy
+
+autonumber 1
+ClientThread -> TSObjectProxy: request:
+activate TSObjectProxy
+note left of ClientThread
+this is the second request.
+end note
+TSObjectProxy -> TSObjectCollection:  getTSObject
+activate TSObjectCollection
+TSObjectCollection --> TSObjectProxy: return TSObject
+deactivate TSObjectCollection
+TSObjectProxy -> TSObject: request
+activate TSObject
+TSObject --> TSObjectProxy: return
+deactivate TSObject
+TSObjectProxy --> ClientThread: return TSObject
+deactivate TSObjectProxy
+
+@enduml

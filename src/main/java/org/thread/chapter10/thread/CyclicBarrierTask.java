@@ -22,7 +22,8 @@ public class CyclicBarrierTask implements Runnable
     public void run()
     {
         try {
-            for (int i=0; i<PHASE; i++) {
+            // 每三个线程步调一致
+            for (int i=0; i< 3; i++) {
                 doPhrase(i);
                 cyclicBarrier.await();
             }
@@ -38,7 +39,9 @@ public class CyclicBarrierTask implements Runnable
                 Thread.currentThread().getName(), context, phrase);
         try {
             Thread.sleep(3000);
-        }catch (InterruptedException e){}
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         finally {
             System.out.printf("%s : CyclicBarrierTask: END : count= %s, phrase = %s%n",
                     Thread.currentThread().getName(), context, phrase);

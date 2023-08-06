@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface AdvanceMediaPlayer
+class VideoPlayer
+class MP4Player
+class BasicPlayer
+interface MediaPlayer
+class PlayerAdapter
+
+
+interface AdvanceMediaPlayer{
+     void advancePlay()
+}
+
+class VideoPlayer implements AdvanceMediaPlayer{
+
+}
+
+class MP4Player implements AdvanceMediaPlayer{}
+
+class BasicPlayer implements MediaPlayer{}
+
+interface MediaPlayer {
+    void play()
+}
+
+class PlayerAdapter implements MediaPlayer {
+    private  AdvanceMediaPlayer mp4Player;
+    private AdvanceMediaPlayer videoPlayer;
+
+    void play();
+}
+
+PlayerAdapter --o AdvanceMediaPlayer
+@enduml

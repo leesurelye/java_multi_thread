@@ -17,7 +17,7 @@ public class TardisTest
     // Presto Client
     public static void main(String[] args) throws ClassNotFoundException, SQLException
     {
-        String username = "yanyi_0629_1";
+        String username = "presto";
         String server = "localhost";
 //        String server = "10.5.111.1";
         String port = "8080";
@@ -28,7 +28,7 @@ public class TardisTest
         while(true){
             try {
                 Class.forName("com.facebook.presto.jdbc.PrestoDriver");
-                String jdbcurl = String.format("jdbc:presto://%s:%s/?customHeaders=X-Cluster-Id:%s", server, port, "6ba22a0d-d520-4507-9cb6-932d2cea52e3");
+                String jdbcurl = String.format("jdbc:presto://%s:%s/?customHeaders=X-Cluster-Id:%s", server, port, "5ca6e6f7-f67f-43be-81d6-05a0b1243614");
                 Properties props = new Properties();
                 props.setProperty("user", username);
                 connection = DriverManager.getConnection(jdbcurl, props);

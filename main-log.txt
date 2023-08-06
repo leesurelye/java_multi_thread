@@ -1,0 +1,3 @@
+Alice ClientThread is constructed
+Bob ClientThread is constructed
+Chris ClientThread is constructed

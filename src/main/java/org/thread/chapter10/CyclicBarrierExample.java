@@ -28,7 +28,7 @@ public class CyclicBarrierExample
         //用于确认工作是否结束
         CountDownLatch downLatch = new CountDownLatch(THREADS);
         try {
-            for (int i = 0 ; i <THREADS; i++) {
+            for (int i = 0 ; i < THREADS; i++) {
                 executorService.execute(new CyclicBarrierTask(phaseBarrier, downLatch, i + 1));
             }
             System.out.println("AWAIT");

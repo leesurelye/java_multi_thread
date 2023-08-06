@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+QueryResource -> SqlJobsManager: submitSqlJob()
+SqlJobsManager -> UserSession: getUserSession()
+UserSession --> SqlJobsManager: return UserSession()
+SqlJobsManager -> QueryContext:  createQueryContext()
+QueryContext -> CatalogReader: new CatalogReader (UserSession)
+CatalogReader -> CatalogReader: set clusterID, catalog, schemaPath
+CatalogReader --> QueryContext : return CatalogReader
+SqlJobsManager -> SqlJobExecutor: executeSql()
+SqlJobExecutor -> UsedHandler: executeHandler()
+UsedHandler -> CatalogReader: validate schemaPath()
+CatalogReader --> UsedHandler: return validate pass
+UsedHandler -> UserSession: set default schema, catalog
+UserSession --> UsedHandler: return set ok
+UsedHandler --> SqlJobExecutor: return Result
+SqlJobExecutor --> SqlJobsManager: return Result
+SqlJobsManager --> QueryResource: complete
+@enduml

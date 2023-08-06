@@ -52,6 +52,9 @@ public class CountUpThread extends Thread
         }
     }
 
+    /**
+     * work 可能随时会被打断，因此需要抛出异常
+     */
     private void doWork() throws InterruptedException
     {
         counter ++;
@@ -67,6 +70,7 @@ public class CountUpThread extends Thread
         FileOutputStream fileInputStream = null;
         try {
             fileInputStream = new FileOutputStream(new File("counter.txt"));
+            fileInputStream.write(String.valueOf(counter).getBytes());
         }catch (IOException e) {
             e.printStackTrace();
         } finally {
