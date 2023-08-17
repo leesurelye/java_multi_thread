@@ -1,4 +1,4 @@
-package org.patterns.adapter;
+package org.patterns.adapter.case1;
 
 /**
  * 低级接口

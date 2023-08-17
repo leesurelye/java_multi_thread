@@ -1,4 +1,4 @@
-package org.patterns.adapter;
+package org.patterns.adapter.case1;
 
 public class BasicPlayer implements MediaPlayer
 {

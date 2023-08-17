@@ -28,7 +28,7 @@ public class TardisTest
         while(true){
             try {
                 Class.forName("com.facebook.presto.jdbc.PrestoDriver");
-                String jdbcurl = String.format("jdbc:presto://%s:%s/?customHeaders=X-Cluster-Id:%s", server, port, "5ca6e6f7-f67f-43be-81d6-05a0b1243614");
+                String jdbcurl = String.format("jdbc:presto://%s:%s/?customHeaders=X-Cluster-Id:%s", server, port, "default");
                 Properties props = new Properties();
                 props.setProperty("user", username);
                 connection = DriverManager.getConnection(jdbcurl, props);

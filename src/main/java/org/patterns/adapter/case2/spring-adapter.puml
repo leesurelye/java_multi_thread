@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class DispatcherServlet
+class SimpleControllerHandlerAdapter
+interface HandlerAdapter
+interface Controller
+class ServletWrappingController
+
+DispatcherServlet -> HandlerAdapter
+
+SimpleControllerHandlerAdapter ..|> HandlerAdapter
+SimpleControllerHandlerAdapter -> Controller
+ServletWrappingController ..|> Controller
+
+@enduml
